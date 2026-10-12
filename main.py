@@ -1,4 +1,4 @@
-from custom_classes import DVD, Book, MediaItem
+from custom_classes import DVD, Book, LibraryCollection, MediaItem
 
 
 def print_separator():
@@ -53,6 +53,32 @@ def demo_dvd():
     print_separator()
     print("\nTrying to check out the DVD again...")
     print(dvd.checkout())
+
+
+def demo_library():
+    library = LibraryCollection()
+    dune = Book("Dune", "Frank Herbert", page_count=412)
+    interstellar = DVD("Interstellar", "Christopher Nolan", duration=169)
+    inception = MediaItem("Inception", "Christopher Nolan")
+    hobbit = Book("The Hobbit", "J.R.R. Tolkien", page_count=310)
+
+    print_separator()
+    print("Adding items to the library...")
+    for item in (dune, interstellar, inception, hobbit):
+        library.add_item(item)
+
+    print_separator()
+    print("Available titles:")
+    print(library.list_available())
+
+    print_separator()
+    print("\nChecking out Dune and Interstellar...")
+    print(dune.checkout())
+    print(interstellar.checkout())
+
+    print_separator()
+    print("Available titles:")
+    print(library.list_available())
     print_separator()
 
 
@@ -60,6 +86,7 @@ def main():
     demo_media_items()
     demo_book()
     demo_dvd()
+    demo_library()
 
 
 if __name__ == "__main__":
